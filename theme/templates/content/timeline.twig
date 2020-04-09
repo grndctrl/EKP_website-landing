@@ -1,0 +1,66 @@
+<div id="section-timeline" class="section section-timeline">
+
+  <div class="fade-sticky-sidebar w-full h-0"></div>
+
+  <div class="container">
+    <div class="bg-white section">
+      <div class="row">
+        <div class="col w-10/24 ml-1/24">
+          <h3 class="h3">Tijdlijn</h3>
+          {% include "components/lazy-image.twig" with {
+        ratio: 'original'
+      } %}
+
+        </div>
+        <div class="col w-10/24 ml-1/24">
+
+          <div class="w-full border-black border-t py-8">
+          {% for item in content.list %}
+            <div class="flex w-full justify-between items-end">
+              <div class="p2">{{item.leftText}}</div>
+              <div class="p2 xl:mr-1/24">{{item.rightText}}</div>
+            </div>
+          {% endfor %}
+          </div>
+
+          <accordion>
+            {% for phase in content.phases %}
+
+              <div data-index="{{ loop.index }}" class="accordion-slide">
+                <div data-target="{{ loop.index }}" class="accordion-button flex justify-between items-center">
+                  <div class="p2">
+                    Fase
+                    {{ loop.index }}
+                  </div>
+                  <div class="toggle">
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+
+                <div class="accordion-wrapper">
+                  <div class="accordion-content">
+                    {% for item in phase.list %}
+                      <div class="flex w-full justify-between items-end">
+                        <div class="p2">{{item.leftText}}</div>
+                        <div class="p2 xl:mr-1/24">{{item.rightText}}</div>
+                      </div>
+                    {% endfor %}
+
+                    {% if phase.text %}
+                      <div class="p3 mt-4">{{ phase.text }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </accordion>
+
+          <div class="p3 mt-12">
+            {{ content.footnote }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

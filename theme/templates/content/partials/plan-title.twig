@@ -1,0 +1,35 @@
+{% extends "content/partials/_plan-page.twig" %}
+
+{% block leftColumn %}
+  <div class="h-full flex flex-col justify-between">
+  <h3 class="h3 mb-12">{{ content.columns.leftColumn.header }}</h3>
+
+  {% for extra in content.columns.leftColumn.extra %}
+    {% if extra.acf_fc_layout == 'text' %}
+      <p class="p2">
+        {{ extra.text }}
+      </p>
+    {% else %}
+      {% set ratio = 'contain' %}
+        {% if extra.fit %}
+          {% set ratio = 'fit' %}
+        {% endif %}
+        <div class="absolute inset-0 mb-8">
+        {% include "components/lazy-image.twig" with {
+          image: extra.image,
+          ratio: ratio,
+          size: 'portrait',
+          loose: true
+        } %}
+        </div>
+    {% endif %}
+  {% endfor %}
+
+  </div>
+{% endblock %}
+
+{% block rightColumn %}
+  <div class="p3">
+    {{ content.columns.rightColumn.text }}
+  </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col ml-1/24 md:w-10/24">
+    <h3 class="h3 {% if content.columns.leftColumn.extra|length > 0 %}mb-12{% endif %}">
+      {{ content.columns.leftColumn.header }}
+    </h3>
+  </div>
+</div>
+<div class="row mb-20">
+  <div class="col mx-auto md:w-21/24">
+    {% for extra in content.columns.leftColumn.extra %}
+      {% if extra.acf_fc_layout == "text" %}
+        <p class="p1">
+          {{ extra.text }}
+        </p>
+      {% else %}
+        <div class="h-full relative">
+          {% include "components/lazy-image.twig" with {
+            image: extra.image,
+            ratio: 'original',
+            size: 'portrait',
+            loose: true
+          } %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col mx-auto md:w-17/24">
+    <div class="p3">
+      {{ content.columns.rightColumn.text }}
+    </div>
+  </div>
+</div>

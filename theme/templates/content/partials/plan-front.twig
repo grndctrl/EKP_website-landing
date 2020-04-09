@@ -1,0 +1,14 @@
+{% extends "content/partials/_plan-page.twig" %}
+
+{% block leftColumn %}
+  <div class="h-full flex flex-col justify-between">
+  <h1 class="h0 mb-12">{{ content.columns.leftColumn.header }}</h1>
+  <p class="p2">{{ content.columns.leftColumn.text }}</p>
+  </div>
+{% endblock %}
+
+{% block rightColumn %}
+  <div class="p3">
+    {{ content.columns.rightColumn.text }}
+  </div>
+{% endblock %}

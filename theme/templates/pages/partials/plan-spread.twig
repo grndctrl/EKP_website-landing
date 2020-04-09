@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col mx-auto md:w-21/24">
+    {% set ratio = 'contain' %}
+    {% if content.fit %}
+      {% set ratio = 'fit' %}
+    {% endif %}
+    {% include "components/lazy-image.twig" with {
+      image: content.image,
+      ratio: 'strict',
+      size: 'landscape',
+      loose: true
+    } %}
+    <p class="subtext">
+      {{ item.subtext }}
+    </p>
+  </div>
+</div>

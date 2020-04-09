@@ -1,0 +1,14 @@
+.custom-cursor {
+  @apply text-white-85 fixed top-0 left-0 pointer-events-none;
+  z-index: 9999;
+  transform: scale(0);
+  transition: transform $short ease;
+}
+
+body.has-custom-cursor {
+  cursor: none !important;
+
+  .custom-cursor {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,99 @@
+@define-mixin cell-width $width, $size {
+  width: calc((100% + $gutter-$(size)) * ($(width) / 12));
+  &.is-fw {
+    width: calc((100% + $gutter-$(size) - ($page-offset-$(size) * 2)) * ($(width) / 12));
+  }
+}
+
+@define-mixin button-width $width, $size {
+  width: calc((100% + $gutter-$(size)) * ($(width) / 12));
+}
+
+.flickity-wrapper {
+  @apply relative;
+}
+
+.flickity-prev-wrapper,
+.flickity-next-wrapper {
+  @apply absolute flex items-center top-0 bottom-0;
+}
+
+.flickity-prev-wrapper {
+  @apply left-0 right-auto;
+  @for $i from 1 to 12 {
+    &.w-$(i)\/12 {
+      @mixin button-width $(i), lg;
+    }
+  }
+  padding-right: calc($gutter-lg);
+}
+
+.flickity-next-wrapper {
+  @apply right-0 left-auto;
+  @for $i from 1 to 12 {
+    &.w-$(i)\/12 {
+      @mixin button-width $(i), lg;
+    }
+  }
+  padding-left: calc($gutter-lg);
+}
+
+.flickity-slide {
+  @apply w-full ml-1/48 mr-1/48;
+  @for $i from 1 to 12 {
+    &.w-$(i)\/12 {
+      @mixin cell-width $(i), sm;
+    }
+  }
+}
+
+.plan-slide {
+  /* 100vh - 4 * 100 */
+  /* height: calc(100vh - themeToBase('config.section.offset.lg')); */
+  height: calc(100vh - 6 * $section-offset-lg);
+}
+
+.plan-footer {
+  height: calc(2 * $section-offset-lg);
+  padding-top:$section-offset-lg;
+}
+
+@screen md {
+  .flickity-slide {
+    @for $i from 1 to 12 {
+      &.w-$(i)\/12 {
+        @mixin cell-width $(i), md;
+      }
+    }
+
+    @for $i from 1 to 12 {
+      &.md\:w-$(i)\/12 {
+        @mixin cell-width $(i), md;
+      }
+    }
+  }
+}
+
+@screen lg {
+  .flickity-slide {
+    @for $i from 1 to 12 {
+      &.w-$(i)\/12 {
+        @mixin cell-width $(i), lg;
+      }
+    }
+
+    @for $i from 1 to 12 {
+      &.md\:w-$(i)\/12 {
+        @mixin cell-width $(i), md;
+      }
+    }
+
+    @for $i from 1 to 12 {
+      &.lg\:w-$(i)\/12 {
+        @mixin cell-width $(i), md;
+      }
+    }
+  }
+}
+
+/* @mixin hover-child span:last-child, transform, translateY(-4px); */

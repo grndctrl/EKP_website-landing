@@ -1,0 +1,177 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.no-breaks {
+  br {
+    @apply hidden;
+  }
+}
+
+.subtext {
+  @apply text-primary;
+  margin-top: 0.8em;
+  font-family: Matter-Regular;
+  font-size: 12px;
+  letter-spacing: 0.11px;
+  line-height: 16.8px;
+}
+
+.small {
+  font-family: Matter-Regular;
+  font-size: 14px;
+  letter-spacing: -0.06px;
+  line-height: 19.6px;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+
+@screen md {
+  .h0 {
+    font-family: Matter-Medium;
+    font-size: 100px;
+    letter-spacing: -1.33px;
+    line-height: 75px;
+  }
+
+  .h1 {
+    font-family: Matter-Medium;
+    font-size: 100px;
+    letter-spacing: -2.86px;
+    line-height: 125px;
+  }
+
+  .h2 {
+    font-family: Matter-Medium;
+    font-size: 75px;
+    letter-spacing: -1px;
+    line-height: 75px;
+  }
+
+  .h3 {
+    font-family: Matter-Medium;
+    font-size: 34px;
+    letter-spacing: 0.3px;
+    line-height: 40.8px;
+  }
+
+  .p0 {
+    font-family: Matter-Regular;
+    font-size: 24px;
+    letter-spacing: 0.21px;
+    line-height: 33.6px;
+  }
+
+  .p1 {
+    font-family: Matter-Regular;
+    font-size: 24px;
+    color: #283c37;
+    letter-spacing: -0.1px;
+    line-height: 33.6px;
+  }
+  .p2 {
+    font-family: Matter-Regular;
+    font-size: 12px;
+    letter-spacing: 0.11px;
+    line-height: 18px;
+  }
+  .p3 {
+    font-family: Matter-Regular;
+    font-size: 16px;
+    letter-spacing: 0.14px;
+    line-height: 22.4px;
+  }
+}
+
+
+@screen lg {
+  .subtext {
+    @apply text-primary;
+    margin-top: 0.8em;
+    font-size: 18px;
+    letter-spacing: 0.16px;
+    line-height: 25.2px;
+  } 
+  .h0 {
+    font-family: Matter-Medium;
+    font-size: 175px;
+    letter-spacing: -5px;
+    line-height: 157.5px;
+  }
+
+  .h1 {
+    font-family: Matter-Medium;
+    font-size: 100px;
+    letter-spacing: -2.86px;
+    line-height: 125px;
+  }
+
+  .h2 {
+    font-family: Matter-Medium;
+    font-size: 75px;
+    letter-spacing: -1px;
+    line-height: 75px;
+  }
+
+  .h3 {
+    font-family: Matter-Medium;
+    font-size: 50px;
+    letter-spacing: -0.42px;
+    line-height: 60px;
+  }
+
+  .p0 {
+    font-family: Matter-Regular;
+    font-size: 32px;
+    letter-spacing: -0.13px;
+    line-height: 44.8px;
+  }
+
+  .p1 {
+    font-family: Matter-Regular;
+    font-size: 24px;
+    color: #283c37;
+    letter-spacing: -0.1px;
+    line-height: 33.6px;
+  }
+  .p2 {
+    font-family: Matter-Regular;
+    font-size: 22px;
+    letter-spacing: -0.09px;
+    line-height: 30.8px;
+  }
+  .p3 {
+    font-family: Matter-Regular;
+    font-size: 18px;
+    letter-spacing: 0.16px;
+    line-height: 25.2px;
+  }
+}
+
+/* @screen 2xl {
+  .h1 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.6xl'));
+  }
+
+  .h2 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.4xl'));
+  }
+
+  .h3 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.3xl'));
+  }
+
+  .p1 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.xl'));
+  }
+  .p2 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.lg'));
+  }
+  .p3 {
+    font-size: calc(100vw / themeToBase('screens.2xl') * themeToBase('fontSize.base'));
+  }
+} */

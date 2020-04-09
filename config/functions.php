@@ -150,11 +150,20 @@ class BoilerplateClass extends Timber\Site
 
     public function load_scripts()
     {
-      wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
-      wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
-      wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), time(), true);
-      wp_enqueue_script('chunks', get_template_directory_uri() . '/js/chunks.js', array(), time(), true);
-      wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), time(), false);
+        $manifest = file_get_contents('/var/www/html/wp-content/themes/timber-tailwind/manifest.json');
+        $json = json_decode($manifest,true);
+        
+        $mainJs = $json["main.js"];
+        $mainCss = $json["main.css"];
+        $fontsJs = $json["fonts.js"];
+        $fontsCss = $json["fonts.css"];
+        $headJs = $json["head.js"];
+       
+        wp_enqueue_style('main', $mainCss);
+        wp_enqueue_style('fonts', $fontsCss);
+        wp_enqueue_script('main', $mainJs, array(), time(), true);
+        wp_enqueue_script('fonts', $fontsJs, array(), time(), false);
+        wp_enqueue_script('head', $headJs, array(), time(), false);
     }
 
     public function load_admin_scripts()

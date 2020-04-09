@@ -1,0 +1,19 @@
+{% if isOverlay is not defined %}
+  {% set isOverlay = false %}
+{% endif %} 
+
+{% if menu %}
+
+  <ul class="menu">
+
+    {% for item in menu %}
+
+      <li class="menu__item">
+        <a class="button" href="{{ item.link }}" target="{{ item.target }}" {% if isOverlay %}v-on:click="eventBus.$emit('nav-hide')"{% endif %}>{{ item.title }}</a>
+      </li>
+
+    {% endfor %}
+
+  </ul>
+
+{% endif %}

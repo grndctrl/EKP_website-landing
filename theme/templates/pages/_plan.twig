@@ -1,0 +1,41 @@
+{# Default page #}
+
+{% extends "layout/base.twig" %}
+
+{% set mainClass = ['page-' ~ post.slug, 'bg-white'] %}
+
+{% block main %}
+
+  <div class="page-header-offset"></div>
+
+  {% for page in post.meta("pages") %}
+
+    <div class="section">
+      <div class="container">
+
+        {% if page.acf_fc_layout == "front" %}
+          {% include "pages/partials/plan-front.twig" with {
+                  content: page
+                } %}
+        {% elseif page.acf_fc_layout == 'title' %}
+          {% include "pages/partials/plan-title.twig" with {
+                  content: page
+                } %}
+        {% elseif page.acf_fc_layout == 'imageSpread' %}
+          {% include "pages/partials/plan-spread.twig" with {
+                  content: page
+                } %}
+        {% elseif page.acf_fc_layout == 'columns' %}
+          {% include "pages/partials/plan-columns.twig" with {
+                  content: page
+                } %}
+        {% endif %}
+
+      </div>
+    </div>
+
+  {% endfor %}
+  
+{% endblock %}
+
+{% block scripts %}{% endblock %}

@@ -1,0 +1,19 @@
+<div id="section-process" class="section section-columns">
+  <div class="container">
+    <h3 class="h3 mb-12">{{content.header}}</h3>
+    <div class="row">
+
+    {% for item in content.columns %}
+      <div class="col w-5/24{% if not loop.first %} ml-1/24{% endif %} ">
+        <h2 class="h1 mb-8">0{{ loop.index }}</h2>
+        <div class="p3">
+          {{ item.text }}
+        </div>
+      </div>
+    {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+<div class="unfade-sticky-sidebar w-full h-0"></div>

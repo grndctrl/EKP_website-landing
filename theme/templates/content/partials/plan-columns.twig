@@ -1,0 +1,60 @@
+{% extends "content/partials/_plan-page.twig" %}
+
+{% block leftColumn %}
+  <div class="h-full relative">
+
+    {% for item in content.columns.leftColumn %}
+      {% if item.acf_fc_layout == 'text' %}
+        <div class="p3">
+          {{ item.text }}
+        </div>
+      {% else %}
+        {% set ratio = 'contain' %}
+        {% if item.fit %}
+          {% set ratio = 'fit' %}
+        {% endif %}
+        <div class="absolute inset-0 mb-8">
+        {% include "components/lazy-image.twig" with {
+          image: item.image,
+          ratio: ratio,
+          size: 'portrait',
+          loose: true
+        } %}
+        </div>
+        <div class="subtext absolute bottom-0">
+          {{ item.subtext }}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+{% endblock %}
+
+{% block rightColumn %}
+  <div class="h-full relative">
+  
+    {% for item in content.columns.rightColumn %}
+      {% if item.acf_fc_layout == 'text' %}
+        <div class="p3">
+          {{ item.text }}
+        </div>
+      {% else %}
+        {% set ratio = 'contain' %}
+        {% if item.fit %}
+          {% set ratio = 'fit' %}
+        {% endif %}
+        <div class="absolute inset-0 mb-8">
+        {% include "components/lazy-image.twig" with {
+          image: item.image,
+          ratio: ratio,
+          size: 'portrait',
+          loose: true
+        } %}
+        </div>
+        <div class="subtext absolute bottom-0">
+          {{ item.subtext }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

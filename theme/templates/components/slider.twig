@@ -1,0 +1,46 @@
+<flickity-slider>
+  {% if fullWidth is not defined %}
+    {% set fullWidth = false %}
+  {% endif %}
+  {% if slideClass is not defined %}
+    {% set slideClass = [] %}
+  {% endif %}
+
+  {% for item in slides %}
+
+    <div data-slide-description="{{ item.subtext }}" class="flickity-slide {{ slideClass|join(' ') }} {% if fullWidth %}is-fw{% endif %}">
+
+      {% if item.image %}
+        {# {% include "components/lazy-image.twig" with {
+          image: item.image
+        } %} #}
+        {% include "components/lazy-image.twig" %}
+      {% else %}
+        {% include "components/lazy-image.twig" %}
+      {% endif %}
+
+      {# <div class="w-full h-64 bg-yellow-500"></div> #}
+
+    </div>
+
+  {% endfor %}
+
+  {% if slides | length > 1 %}
+
+    <template slot="navigation">
+      <div class="flickity-prev-wrapper w-3/12 {% if fullWidth %}is-fw{% endif %}">
+        <div class="flickity-prev w-full h-full"></div>
+        <div class="flickity-prev-cursor pointer-events-none invisible">
+          {% include "svg/arrow-left.twig" %}
+        </div>
+      </div>
+      <div class="flickity-next-wrapper w-3/12 {% if fullWidth %}is-fw{% endif %}">
+        <div class="flickity-next w-full h-full"></div>
+        <div class="flickity-next-cursor pointer-events-none invisible">
+          {% include "svg/arrow-right.twig" %}
+        </div>
+      </div>
+    </template>
+
+  {% endif %}
+</flickity-slider>

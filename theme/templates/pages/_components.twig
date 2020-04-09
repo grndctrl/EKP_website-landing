@@ -1,0 +1,21 @@
+{# Default page #}
+
+{% extends "layout/base.twig" %}
+
+{% set mainClass = ['page-' ~ entry.slug] %}
+
+{% block main %}
+
+  <section class="section">
+    <div class="page-header-offset"></div>
+
+    {% include "components/slider.twig" with {
+      fullWidth : true,
+      slideClass: ["w-8/12 lg:w-10/12"]
+    } %}
+
+  </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

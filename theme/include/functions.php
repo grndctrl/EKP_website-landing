@@ -28,7 +28,7 @@ Timber::$autoescape = false;
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php").
  */
-class TimberTailwind extends Timber\Site
+class EkpLanding extends Timber\Site
 {
     /** Add timber support. */
     public function __construct()
@@ -42,7 +42,13 @@ class TimberTailwind extends Timber\Site
         add_action('admin_enqueue_scripts', array( $this, 'load_admin_scripts' ));
         add_action('wp_enqueue_scripts', array( $this, 'load_scripts' ));
         add_filter('get_twig', array($this, 'add_to_twig'));
+        add_filter('acf/fields/google_map/api', array($this, 'my_acf_google_map_api'));
         parent::__construct();
+    }
+
+    public function my_acf_google_map_api( $api ){
+        $api['key'] = 'AIzaSyD945Kmvxqy0zQCjf6MDIXQ0-TLM-LFZ2I';
+        return $api;
     }
 
     public function theme_supports()
@@ -101,9 +107,20 @@ class TimberTailwind extends Timber\Site
      */
     public function add_to_context($context)
     {
-        $context['value'] = 'I am a value set in your functions.php file';
         $context['menu'] = new Timber\Menu();
         $context['site'] = $this;
+
+        $args = array(
+            'post_type' => 'global'
+        );
+        $globals = Timber::get_posts($args);
+        $context['globals'] = $globals;
+
+        $args = array(
+            'post_type' => 'page',
+            'name' => 'plan'
+        );
+        $context['plan'] = Timber::get_post($args);
 
         return $context;
     }
@@ -111,18 +128,59 @@ class TimberTailwind extends Timber\Site
     public function timmy_sizes($sizes)
     {
         return array(
-            'portrait-50vw' => array(
-                'resize' => array(800, 1200),
-                'srcset' => array(0.5, 2, 3),
+            'thumbnail' => array(
+                'resize' => array(200, 200),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'lazy' => array(
+                'resize' => array(800, 800),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'portrait' => array(
+                'resize' => array(1250, 833),
+                'srcset' => array(0.5),
                 'sizes' => '(min-width: 640px) 50vw, 100vw',
                 'oversize' => array(
                     'allow' => false,
                     'style_attr' => false,
                 ),
             ),
-            'landscape-100vw' => array(
-                'resize' => array(1600, 1066),
-                'srcset' => array(0.5, 2, 3),
+            'landscape' => array(
+                'resize' => array(2500, 1666),
+                'srcset' => array(0.5),
+                'sizes' => '100vw',
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'portrait-loose' => array(
+                'resize' => array(1250),
+                'srcset' => array(0.5),
+                'sizes' => '(min-width: 640px) 50vw, 100vw',
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'landscape-loose' => array(
+                'resize' => array(2500),
+                'srcset' => array(0.5),
+                'sizes' => '100vw',
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'square' => array(
+                'resize' => array(2500, 2500),
+                'srcset' => array(0.5),
                 'sizes' => '100vw',
                 'oversize' => array(
                     'allow' => false,
@@ -150,11 +208,20 @@ class TimberTailwind extends Timber\Site
 
     public function load_scripts()
     {
-        wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
-        wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
-        wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), time(), true);
-        wp_enqueue_script('chunks', get_template_directory_uri() . '/js/chunks.js', array(), time(), true);
-        wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), time(), false);
+        $manifest = file_get_contents('/var/www/html/wp-content/themes/ekp-landing/manifest.json');
+        $json = json_decode($manifest,true);
+        
+        $mainJs = $json["main.js"];
+        $mainCss = $json["main.css"];
+        $fontsJs = $json["fonts.js"];
+        $fontsCss = $json["fonts.css"];
+        $headJs = $json["head.js"];
+       
+        wp_enqueue_style('main', $mainCss);
+        wp_enqueue_style('fonts', $fontsCss);
+        wp_enqueue_script('main', $mainJs, array(), time(), true);
+        wp_enqueue_script('fonts', $fontsJs, array(), time(), false);
+        wp_enqueue_script('head', $headJs, array(), time(), false);
     }
 
     public function load_admin_scripts()
@@ -185,6 +252,4 @@ class TimberTailwind extends Timber\Site
         return $text;
     }
 }
-new TimberTailwind();
-
-flush_rewrite_rules();
+new EkpLanding();

@@ -1,0 +1,47 @@
+<div class="row mb-20">
+  {% for item in content.columns.leftColumn %}
+    {% if item.acf_fc_layout == "text" %}
+      <div class="col mx-auto md:w-17/24">
+        <div class="p3">
+          {{ item.text }}
+        </div>
+      </div>
+    {% else %}
+      <div class="col mx-auto md:w-21/24">
+        {% include "components/lazy-image.twig" with {
+            image: item.image,
+            ratio: 'original',
+            size: 'portrait',
+            loose: true
+          } %}
+        <p class="subtext">
+          {{ item.subtext }}
+        </p>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="row">
+  {% for item in content.columns.rightColumn %}
+    {% if item.acf_fc_layout == "text" %}
+      <div class="col mx-auto md:w-17/24">
+        <div class="p3">
+          {{ item.text }}
+        </div>
+      </div>
+    {% else %}
+      <div class="col mx-auto md:w-21/24">
+        {% include "components/lazy-image.twig" with {
+          image: item.image,
+          ratio: 'original',
+          size: 'portrait',
+          loose: true
+        } %}
+        <p class="subtext">
+          {{ item.subtext }}
+        </p>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

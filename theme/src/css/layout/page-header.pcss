@@ -1,0 +1,94 @@
+.page-header-offset {
+  padding-top: $page-header-height-lg;
+}
+
+body.is-nav-active .page-header {
+  @apply bg-gray-300;
+  /* transform: translateY(calc(-1 * $page-offset-sm)); */
+}
+
+.page-header {
+  @apply fixed w-full flex items-center bg-transparent;
+  /* padding-top: $page-offset-sm; */
+  /* padding-bottom: $page-offset-sm; */
+  height: $page-header-height-sm;
+  transform: translateY(-100%);
+  transition: transform $short ease-out, background $short ease-out;
+
+  .nav-bar {
+    @apply flex justify-between items-center justify-between;
+    height: $nav-bar-height;
+
+    &__logo {
+      @apply flex-shrink flex items-center;
+    }
+
+    &__menu {
+      @apply hidden flex-grow;
+
+      .menu {
+        @apply flex justify-end;
+
+        &__item {
+          @apply ml-8;
+        }
+      }
+    }
+
+    &__burger {
+      @apply flex flex-shrink flex-col justify-between cursor-pointer;
+      width: $burger-width;
+      height: $burger-height;
+
+      span {
+        @apply bg-black w-full transition-transform duration-short ease-in;
+        height: $burger-bar-height;
+      }
+
+      /* @mixin hover-child span:first-child, transform, translateY(4px);
+      @mixin hover-child span:last-child, transform, translateY(-4px); */
+
+      &.is-active {
+        span:first-child {
+          transform: translateY(calc(($burger-height - $burger-bar-height) / 2)) rotate(45deg);
+        }
+        span:last-child {
+          transform: translateY(calc(-1 * (($burger-height - $burger-bar-height) / 2))) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+@screen md {
+  body.is-nav-active .page-header {
+    transform: translateY(calc(-1.5 * $page-offset-md));
+  }
+  .page-header {
+    /* padding-top: $page-offset-md; */
+    /* padding-bottom: $page-offset-md; */
+    height: $page-header-height-md;
+    transition: $short ease;
+  }
+}
+
+@screen lg {
+  body.is-nav-active .page-header {
+    transform: translateY(calc(-1.5 * $page-offset-lg));
+  }
+  .page-header {
+    /* padding-top: $page-offset-lg; */
+    /* padding-bottom: $page-offset-lg; */
+    height: $page-header-height-lg;
+    transition: $short ease;
+
+    .nav-bar {
+      &__menu {
+        @apply block;
+      }
+      &__burger {
+        @apply hidden;
+      }
+    }
+  }
+}

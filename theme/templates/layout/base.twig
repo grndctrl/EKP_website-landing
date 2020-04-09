@@ -1,0 +1,49 @@
+{% if mainClass is not defined %}
+  {% set mainClass = [] %}
+{% endif %}
+
+{% if transition is not defined %}
+  {% set transition = 'swup-transition-fade' %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "helpers/metadata.twig" %}
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+    {{function('wp_head')}}
+  </head>
+
+  <body class="bg-secondary text-black">
+    <div class="custom-cursor"></div>
+    <div id="layout">
+
+      {% block overlays %}
+        {% include "layout/overlays.twig" %}
+      {% endblock %}
+
+      {% block header %}
+        {% include "layout/page-header.twig" %}
+      {% endblock %}
+
+    </div>
+
+    <div id="content">
+    
+      <main id="swup" class="{{ transition }} {{ mainClass|join(' ') }} z-10">
+        {% block main %}{% endblock %}
+
+        {% block scripts %}{% endblock %}
+      </main>
+
+      {% block footer %}
+        {% include "layout/page-footer.twig" %}
+      {% endblock %}
+    </div>
+
+    {{ function('wp_footer') }}
+
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<div id="section-plan" class="section section-plan">
+  <div class="container h-full">
+
+    <div class="section w-15/24 mx-auto lg:w-full h-full bg-white px-1/24">
+
+      <div class="hidden lg:block">
+      <flickity-slider is-plan="true" style="height: calc(100% - 100px)">
+        {% for page in plan.meta("pages") %}
+
+          <div class="flickity-slide plan-slide">
+
+            {% if page.acf_fc_layout == "front" %}
+              {% include "content/partials/plan-front.twig" with {
+                content: page
+              } %}
+            {% elseif page.acf_fc_layout == 'title' %}
+              {% include "content/partials/plan-title.twig" with {
+                content: page
+              } %}
+            {% elseif page.acf_fc_layout == 'imageSpread' %}
+              {% include "content/partials/plan-spread.twig" with {
+                content: page
+              } %}
+            {% elseif page.acf_fc_layout == 'columns' %}
+              {% include "content/partials/plan-columns.twig" with {
+                content: page
+              } %}
+            {% endif %}
+
+          </div>
+
+        {% endfor %}
+      </flickity-slider>
+      </div>
+
+      <div class="block lg:hidden">
+        <h3 class="h3">Het Plan</h3>
+        <p class="p3">{{ content.text }}</p>
+        <a href="/plan" class="button">lees meer</a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

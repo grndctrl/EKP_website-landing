@@ -1,0 +1,31 @@
+<div class="section section-text">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-17/24 ml-3/24 mb-12 lg:mb-0 lg:w-10/24 lg:ml-1/24">
+        {% if content.leftColumn[0].acf_fc_layout == 'title' %}
+          <h3 class="h3 w-11/24">
+          {{ content.leftColumn[0].text }}
+          </h3>
+        {% else %}
+          <div class="p3">
+          {{ content.leftColumn[0].text }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col w-17/24 ml-3/24 lg:w-10/24 lg:ml-1/24">
+        {% if content.rightColumn[0].acf_fc_layout == 'title' %}
+          <h3 class="h3">
+          {{ content.rightColumn[0].text }}
+          </h3>
+        {% else %}
+          <div class="p3">
+          {{ content.rightColumn[0].text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<page-header class="z-30">
+  <div class="container">
+
+    {% block header %}
+
+      {% set query = craft.globalSets().handle("header") %}
+      {% set headerEntry = query.one() %}
+
+      <nav id="nav-bar" class="nav-bar" role="navigation">
+
+        <div class="nav-bar__menu">
+          {% include "components/menu.twig" with {
+            "menu" : menu.get_items
+          } %}
+        </div>
+
+        <div class="nav-bar__burger ml-auto" ref="burger" v-on:click="eventBus.$emit('nav-toggle')">
+          <span></span>
+          <span></span>
+        </div>
+
+      </nav>
+
+    {% endblock %}
+
+  </div>
+</page-header>

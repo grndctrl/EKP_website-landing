@@ -1,0 +1,39 @@
+.overlays {
+  @apply fixed h-0 w-0 top-0 left-0;
+}
+
+body.is-nav-active {
+  @apply overflow-hidden w-screen h-screen fixed;
+}
+
+.nav-overlay {
+  @apply fixed inset-0 bg-gray-300 text-gray-700 transition-transform duration-short transform -translate-y-full;
+  transform: translateY(-100%);
+
+  &.is-active {
+    @apply transform translate-y-0;
+    transform: translateY(0);
+  }
+
+  .container {
+    @apply h-full;
+  }
+
+  &__menu {
+    @apply flex items-center;
+
+    .menu {
+      @apply w-full text-center;
+
+      &__item {
+        @apply my-4 text-4xl uppercase font-bold;
+      }
+    }
+  }
+}
+
+@screen lg {
+  .nav-overlay {
+    @apply hidden;
+  }
+}
