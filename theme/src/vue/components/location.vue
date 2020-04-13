@@ -45,6 +45,7 @@ export default {
       zoom: this.zoom
     })
 
+    this.map.addControl(new mapboxgl.NavigationControl())
     this.map.scrollZoom.disable();
 
     let marker = document.createElement('div');

@@ -1,6 +1,6 @@
 <template>
   <div class="video-player relative">
-    <div ref="thumbnail" @click="play" class="thumbnail absolute inset-0 z-10">
+    <div ref="thumbnail" @click="play" class="thumbnail absolute inset-0 z-10 cursor-pointer">
       <figure class="fit">
         <img :src="thumbnail" alt="">        
       </figure>

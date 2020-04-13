@@ -54,7 +54,8 @@ const configureTerser = () => {
 module.exports = merge(common, {
   plugins: [
     new BundleAnalyzerPlugin()
-  ].concat(configureCriticalCss()),
+  ],
+  // ].concat(configureCriticalCss()),
 
   optimization: {
     minimizer: [new TerserPlugin(configureTerser())]

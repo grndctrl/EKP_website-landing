@@ -1,10 +1,24 @@
 <div id="section-process" class="section section-columns">
   <div class="container">
-    <h3 class="h3 mb-12">{{content.header}}</h3>
+    <h3 class="h3 mb-12 md:ml-2/24 lg:ml-0">{{content.header}}</h3>
     <div class="row">
 
     {% for item in content.columns %}
-      <div class="col w-5/24{% if not loop.first %} ml-1/24{% endif %} ">
+      {% set marginLeftLg = 'lg:ml-1/24' %}
+      {% set marginLeftMd = 'md:ml-1/24' %}
+
+      {% if loop.index is odd %}
+        {% if not loop.first %}
+          {% set marginLeft = 'md:ml-2/24 lg:ml-1/24' %}
+        {% else %}
+          {% set marginLeft = 'md:ml-2/24 lg:ml-0' %}
+        {% endif %}
+      {% else %}
+          {% set marginLeft = 'md:ml-1/24 lg:ml-1/24' %}
+      {% endif %}
+
+
+      <div class="col w-22/24 mb-12 md:mb-0 md:w-9/24 lg:w-5/24 {{ marginLeft }}">
         <h2 class="h1 mb-8">0{{ loop.index }}</h2>
         <div class="p3">
           {{ item.text }}

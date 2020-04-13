@@ -14,6 +14,7 @@ const ScrollTrigger = () => import(/* webpackChunkName: "animations/scroll-trigg
 const Location = () => import(/* webpackChunkName: "components/location" */ '../vue/components/location.vue')
 const Accordion = () => import(/* webpackChunkName: "components/accordion" */ '../vue/components/accordion.vue')
 const VideoPlayer = () => import(/* webpackChunkName: "components/video-player" */ '../vue/components/video-player.vue')
+const WPFormsModal = () => import(/* webpackChunkName: "components/wpforms-modal" */ '../vue/components/wpforms-modal.vue')
 const StickySidebar = () => import(/* webpackChunkName: "components/sticky-sidebar" */ '../vue/components/sticky-sidebar.vue')
 const Styleguide = () => import(/* webpackChunkName: "apps/styleguide" */ '../vue/apps/styleguide.vue')
 
@@ -29,6 +30,7 @@ Vue.component('scroll-trigger', ScrollTrigger)
 Vue.component('location', Location)
 Vue.component('accordion', Accordion)
 Vue.component('video-player', VideoPlayer)
+Vue.component('wpforms-modal', WPFormsModal)
 Vue.component('sticky-sidebar', StickySidebar)
 Vue.component('styleguide', Styleguide)
 
@@ -39,10 +41,23 @@ let swup = null
 window.isLayoutLoaded = false
 window.isContentLoaded = false
 
+setTimeout(() => {
+  let wpToolbar = document.querySelector('#wp-toolbar')
+
+  if (wpToolbar) {
+    let adminLinks = wpToolbar.querySelectorAll('a')
+    adminLinks.forEach(link => {
+      link.setAttribute('data-no-swup', 'true')
+    })
+  }
+}, 4000)
+  
 if (!isIE) {
   swup = new Swup({
     containers: ['#content'],
     animationSelector: '[class*="swup-transition-"]',
+    linkSelector:
+    'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
     plugins: []
   })
 
@@ -99,7 +114,19 @@ function initSwuppingContent() {
     data: {
       eventBus: eventBus
     },
+    methods: {
+      returnHome(event) {
+        let home = event.target.getAttribute('data-home')
+        window.location.href = home
+      }
+    },
     mounted() {
+      let main = document.querySelector('#swup')
+
+      if (main.classList.contains('no-page-header')) {
+        document.body.classList.add('no-page-header')
+      }
+
       swup.on('willReplaceContent', () => {
         eventBus.$emit('swup:willReplaceContent')
         this.$destroy()

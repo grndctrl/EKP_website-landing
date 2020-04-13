@@ -32,6 +32,7 @@ figure {
     img {
       @apply absolute w-full h-full;
       object-fit: contain;
+      object-position: top center;
     }
   }
 
@@ -53,11 +54,24 @@ figure {
       padding-top: 66.66667%;
     }
 
+    &.location::after {
+      content: '';
+      display: block;
+      padding-top: 90%;
+    }
+
     &.square::after {
       content: '';
       display: block;
       padding-top: 66.66667%;
     }
   }
+}
+
+@screen md {
+  figure.strict.location::after {
+      padding-top: 66.66667%;
+  }
+
 }
     /* purgecss end ignore */

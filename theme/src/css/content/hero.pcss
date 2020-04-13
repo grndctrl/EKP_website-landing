@@ -3,5 +3,17 @@
 }
 
 .hero {
-  @apply h-screen;
+  height: calc(100vh - $page-header-height-sm);
+}
+
+@screen md {
+  .hero {
+    height: calc(100vh - $page-header-height-md);
+  }
+}
+
+@screen lg {
+  .hero {
+    height: calc(100vh - $page-header-height-lg);
+  }
 }

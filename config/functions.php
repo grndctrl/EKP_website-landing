@@ -111,7 +111,21 @@ class BoilerplateClass extends Timber\Site
     public function timmy_sizes($sizes)
     {
         return array(
-            'portrait-50vw' => array(
+            'thumbnail' => array(
+                'resize' => array(320, 320),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'lazy' => array(
+                'resize' => array(640, 640),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'portrait' => array(
                 'resize' => array(800, 1200),
                 'srcset' => array(0.5, 2, 3),
                 'sizes' => '(min-width: 640px) 50vw, 100vw',
@@ -120,7 +134,7 @@ class BoilerplateClass extends Timber\Site
                     'style_attr' => false,
                 ),
             ),
-            'landscape-100vw' => array(
+            'landscape' => array(
                 'resize' => array(1600, 1066),
                 'srcset' => array(0.5, 2, 3),
                 'sizes' => '100vw',
@@ -150,7 +164,7 @@ class BoilerplateClass extends Timber\Site
 
     public function load_scripts()
     {
-        $manifest = file_get_contents('/var/www/html/wp-content/themes/timber-tailwind/manifest.json');
+        $manifest = file_get_contents(__DIR__ . '/manifest.json');
         $json = json_decode($manifest,true);
         
         $mainJs = $json["main.js"];

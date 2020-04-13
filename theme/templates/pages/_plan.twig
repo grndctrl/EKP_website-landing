@@ -2,11 +2,12 @@
 
 {% extends "layout/base.twig" %}
 
-{% set mainClass = ['page-' ~ post.slug, 'bg-white'] %}
+{% set bodyClass = ['no-page-header'] %}
+{% set mainClass = ['page-' ~ post.slug, 'bg-white', 'no-page-header'] %}
 
 {% block main %}
 
-  <div class="page-header-offset"></div>
+
 
   {% for page in post.meta("pages") %}
 
@@ -35,7 +36,13 @@
     </div>
 
   {% endfor %}
-  
+
+  <div class="row justify-center py-12">
+  <div class="col">
+    <a @click="returnHome" data-home="{{ site.link }}" class="button">terug</a>
+  </div>
+  </div>
+
 {% endblock %}
 
 {% block scripts %}{% endblock %}

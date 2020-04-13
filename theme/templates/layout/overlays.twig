@@ -1,7 +1,8 @@
-<div id="preloader" style="background: white; position: fixed; z-index: 9999; top: 0; bottom: 0; left: 0; right: 0;"></div>
+<div id="preloader" class="transition-opacity duration-400" style="background: white; position: fixed; z-index: 9999; top: 0; bottom: 0; left: 0; right: 0;"></div>
 
-<div class="overlays z-20">
+<div class="overlays z-40">
     <div class="swup-wiper"></div>
+
     <nav-overlay class="z-10">
       <div class="container nav-overlay__menu">
         {% include "components/menu.twig" with {
@@ -10,4 +11,8 @@
         } %}
       </div>
     </nav-overlay>
+
+    <wpforms-modal class="z-10">
+      {{ function('do_shortcode', '[wpforms id="176"]') }}
+    </wpforms-modal>
 </div>

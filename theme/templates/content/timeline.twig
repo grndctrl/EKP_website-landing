@@ -5,22 +5,24 @@
   <div class="container">
     <div class="bg-white section">
       <div class="row">
-        <div class="col w-10/24 ml-1/24">
-          <h3 class="h3">Tijdlijn</h3>
+        <div class="col w-20/24 md:w-10/24 ml-1/24">
+          <h3 class="h3 mb-12">Tijdlijn</h3>
           {% include "components/lazy-image.twig" with {
-        ratio: 'original'
-      } %}
+            image: content.image,
+            ratio: 'original',
+            size: 'landscape-loose'
+          } %}
 
         </div>
-        <div class="col w-10/24 ml-1/24">
+        <div class="col w-20/24 md:w-10/24 ml-1/24">
 
           <div class="w-full border-black border-t py-8">
-          {% for item in content.list %}
-            <div class="flex w-full justify-between items-end">
-              <div class="p2">{{item.leftText}}</div>
-              <div class="p2 xl:mr-1/24">{{item.rightText}}</div>
-            </div>
-          {% endfor %}
+            {% for item in content.list %}
+              <div class="flex w-full justify-between items-end">
+                <div class="p2">{{item.leftText}}</div>
+                <div class="p2 mr-2/24 md:mr-1/24 lg:mr-0 xl:mr-1/24">{{item.rightText}}</div>
+              </div>
+            {% endfor %}
           </div>
 
           <accordion>
@@ -43,12 +45,13 @@
                     {% for item in phase.list %}
                       <div class="flex w-full justify-between items-end">
                         <div class="p2">{{item.leftText}}</div>
-                        <div class="p2 xl:mr-1/24">{{item.rightText}}</div>
+                        <div class="p2 mr-2/24 md:mr-1/24 gl:mr-0 xl:mr-1/24">{{item.rightText}}</div>
                       </div>
                     {% endfor %}
 
                     {% if phase.text %}
-                      <div class="p3 mt-4">{{ phase.text }}</div>
+                      <div class="hidden lg:block p3 mt-4">{{ phase.text }}</div>
+                      <div class="block lg:hidden p2 mt-4">{{ phase.text }}</div>
                     {% endif %}
                   </div>
                 </div>
@@ -56,7 +59,10 @@
             {% endfor %}
           </accordion>
 
-          <div class="p3 mt-12">
+          <div class="hidden lg:block p3 mt-12">
+            {{ content.footnote }}
+          </div>
+          <div class="block lg:hidden p2 mt-8 md:mt-12">
             {{ content.footnote }}
           </div>
         </div>

@@ -3,19 +3,22 @@
 {% extends "layout/base.twig" %}
 
 {% set mainClass = ['page-' ~ post.slug] %}
+{% set bodyClass = [''] %}
 
 {% block main %}
-  <header class="hero relative page-header-offset">
-    <div class="logo absolute w-full top-0 z-10">
+  <div class="page-header-offset"></div>
+
+  <header class="hero relative">
+    <div class="absolute w-full md:-mt-8 lg:-mt-12p5 top-0 z-10">
       <div class="container">
       <div class="row">
-        <div class="col w-11/24">
-          {% include "svg/logo.twig" %}
+        <div class="col w-20/24 md:w-11/24 ml-1/24 lg:w-11/24">
+          {% include "svg/ekp.twig" %}
         </div>
       </div>
       </div>
     </div>
-    <div class="container w-full h-full">
+    <div class="container pt-10 md:pt-0 w-full h-full">
       <div class="relative w-full h-full">
 
         {% include "components/lazy-image.twig" with {
@@ -31,12 +34,12 @@
     <div class="sticky-container absolute pointer-events-none inset-0 z-10">
     <div class="container w-full h-full">
       <div class="sticky w-7/24 top-0 mr-1/48 ml-auto pt-1/24">
-        <div class="w-full bg-white-85 pointer-events-auto p-1/48 pb-12">
+        <div class="w-full bg-white-85 pointer-events-auto p-1/48 pb-1/24">
           <h3 class="h3 mb-12">{{ post.meta('ctaBlock').header|nl2br }}</h3>
-          <div class="p3 mb-12 max-w-sm">
+          <div class="p3 mb-10 max-w-sm">
             {{ post.meta('ctaBlock').text }}
           </div>
-          <a href="#" class="button">enquête</a>
+          <a href="https://account.ekp-denbosch.nl" target="_blank" class="button">enquête</a>
         </div>
       </div>
     </div>
@@ -46,7 +49,7 @@
       <div class="container mb-64">
         <div class="row">
           <div class="col w-13/24 ml-1/24">
-            <p class="p3 mb-8">'s-Hertogenbosch</p>
+            <p class="p-db mb-8">'s-Hertogenbosch</p>
             <h1 class="h2 mb-30">{{post.meta('introduction').title}}</h1>
             <div class="p0">
               {{ post.meta('introduction').text }}
@@ -61,7 +64,7 @@
     <section class="section">
       <div class="container">
         <div class="row">
-          <div class="col w-21/24 ml-1/24">
+          <div class="col w-22/24 md:w-21/24 md:ml-1/24">
             <p class="p3 mb-8" style="font-size: 18px">'s-Hertogenbosch</p>
             <h1 class="h2 mb-30">{{ post.meta('introduction').title }}</h1>
             <div class="p0">
@@ -72,16 +75,16 @@
       </div>
     </section>
 
-    <section class="section relative z-10 mb-20">
+    <section class="section relative z-10 md:mb-20">
       <div class="container">
         <div class="row">
-          <div class="col w-10/24 ml-auto mr-0">
-            <div class="w-full bg-white-85 pointer-events-auto p-1/48 pb-12">
-              <h3 class="h3 mb-12">{{ post.meta('ctaBlock').header|nl2br }}</h3>
-              <div class="p3 mb-12 max-w-sm">
+          <div class="col w-22/24 md:w-10/24 ml-auto mr-0">
+            <div class="w-full bg-white-85 pointer-events-auto p-2/24 md:p-1/24 pb-12">
+              <h3 class="h3 mb-10">{{ post.meta('ctaBlock').header|nl2br }}</h3>
+              <div class="p3 mb-10 max-w-sm">
                 {{ post.meta('ctaBlock').text }}
               </div>
-              <a href="#" class="button">enquête</a>
+              <a href="https://account.ekp-denbosch.nl" target="_blank" class="button">enquête</a>
             </div>
           </div>
         </div>
@@ -89,10 +92,10 @@
     </section>
   </div>
 
-    <section class="section -mt-64">
+    <section class="section md:-mt-64">
       <div class="container">
         <div class="row">
-          <div class="col w-10/24 ml-1/24 lg:w-9/24 lg:ml-2/24">
+          <div class="col w-22/24 md:w-10/24 md:ml-1/24 lg:w-9/24 lg:ml-2/24">
             {% include "components/lazy-image.twig" with {
             size: 'portrait',
             image: post.meta('doubleImages').left.image
@@ -101,7 +104,7 @@
               {{ post.meta('doubleImages').left.subtext }}
             </p>
           </div>
-          <div class="col w-10/24 lg:w-9/24 ml-1/24 pt-1/24">
+          <div class="col w-22/24 md:w-10/24 lg:w-9/24 md:ml-1/24 pt-1/24">
             {% include "components/lazy-image.twig" with {
             size: 'portrait',
             image: post.meta('doubleImages').right.image
@@ -114,8 +117,9 @@
       </div>
     </section>
 
-    <sticky-sidebar></sticky-sidebar>
-
+    <sticky-sidebar class="hidden md:block"></sticky-sidebar>
+    <div id="top"></div>
+    
     {% for item in post.meta('contentBlocks') %}
       
       {% if item.acf_fc_layout == 'text' %}

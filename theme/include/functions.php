@@ -135,15 +135,29 @@ class EkpLanding extends Timber\Site
                     'style_attr' => false,
                 ),
             ),
+            'lazy-landscape' => array(
+                'resize' => array(800, 533),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'lazy-portrait' => array(
+                'resize' => array(533, 800),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
             'lazy' => array(
-                'resize' => array(800, 800),
+                'resize' => array(800),
                 'oversize' => array(
                     'allow' => false,
                     'style_attr' => false,
                 ),
             ),
             'portrait' => array(
-                'resize' => array(1250, 833),
+                'resize' => array(1250, 1875),
                 'srcset' => array(0.5),
                 'sizes' => '(min-width: 640px) 50vw, 100vw',
                 'oversize' => array(
@@ -208,7 +222,7 @@ class EkpLanding extends Timber\Site
 
     public function load_scripts()
     {
-        $manifest = file_get_contents('/var/www/html/wp-content/themes/ekp-landing/manifest.json');
+        $manifest = file_get_contents(__DIR__ . '/manifest.json');
         $json = json_decode($manifest,true);
         
         $mainJs = $json["main.js"];

@@ -28,7 +28,15 @@
     lazy_srcset: true,
     lazy_src: true
   }) %}
-  {% set lazySrc = image | get_timber_image_src('lazy') %}
+
+  {% set lazySize = 'lazy' %}
+  {% if timmySize == 'landscape' %}
+    {% set lazySize = 'lazy-landscape' %}
+  {% elseif timmySize == 'portrait' %}
+    {% set lazySize = 'lazy-portrait' %}
+  {% endif %}
+
+  {% set lazySrc = image | get_timber_image_src(lazySize) %}
 {% endif %}
 
 

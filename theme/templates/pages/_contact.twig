@@ -1,0 +1,19 @@
+{# Default page #}
+
+{% extends "layout/base.twig" %}
+
+{% set mainClass = ['page-' ~ post.slug] %}
+
+{% block main %}
+
+  <div class="page-header-offset"></div>
+
+  <section class="section">
+  <div class="container">
+  {{ post.content }}
+  </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

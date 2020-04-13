@@ -1,10 +1,16 @@
-.page-header-offset {
-  padding-top: $page-header-height-lg;
-}
-
 body.is-nav-active .page-header {
   @apply bg-gray-300;
   /* transform: translateY(calc(-1 * $page-offset-sm)); */
+}
+
+body.no-page-header {
+  .page-header {
+    @apply hidden;
+  }
+}
+
+.page-header-offset {
+  padding-top: $page-header-height-sm;
 }
 
 .page-header {
@@ -24,7 +30,8 @@ body.is-nav-active .page-header {
     }
 
     &__menu {
-      @apply hidden flex-grow;
+      /* @apply hidden flex-grow; */
+      @apply block flex-grow;
 
       .menu {
         @apply flex justify-end;
@@ -61,6 +68,10 @@ body.is-nav-active .page-header {
 }
 
 @screen md {
+  .page-header-offset {
+    padding-top: $page-header-height-md;
+  }
+
   body.is-nav-active .page-header {
     transform: translateY(calc(-1.5 * $page-offset-md));
   }
@@ -73,6 +84,10 @@ body.is-nav-active .page-header {
 }
 
 @screen lg {
+  .page-header-offset {
+    padding-top: $page-header-height-lg;
+  }
+
   body.is-nav-active .page-header {
     transform: translateY(calc(-1.5 * $page-offset-lg));
   }

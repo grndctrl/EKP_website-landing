@@ -2,16 +2,52 @@
   <div class="container">
 
     {% block footer %}
+      <div class="hidden md:block">
+        <div class="row justify-between items-end">
+          <div class="col w-12/24 flex items-end" style="opacity: 0.8">
+            {% include "svg/sdk.twig" %}
+            <div class="ml-1/24 p3" style="line-height: 1">
+              <a target="_blank" href="https://sdkvastgoed.nl">sdkvastgoed.nl</a>
+            </div>
+          </div>
+          <div class="col flex items-end">
+            <div class="ml-1/24 small text-primary">
+              <a href="{{ site.link }}/privacyverklaring">
+                Disclaimer
+              </a>
+            </div>
+            <div class="ml-1/24 small text-primary">
+              <a href="{{ site.link }}/privacyverklaring">
+                Privacyverklaring
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="row justify-between items-end ">
-      <div class="col w-12/24 flex items-end ">
-        {% include "svg/sdk.twig" %}
-        <div class="ml-1/24 p3" style="line-height: 1">sdkvastgoed.nl</div>
-      </div>
-      <div class="col flex items-end">
-        <div class="ml-1/24 small text-primary">Disclaimer</div>
-        <div class="ml-1/24 small text-primary">Privacyverklaring</div>
-      </div>
+      <div class="block md:hidden">
+        <div class="row justify-between items-end">
+          <div class="col w-14/24 mx-auto flex justify-between items-end">
+            <div class="ml-1/24 small text-primary">
+              <a href="{{ site.link }}/privacyverklaring">
+                Disclaimer
+              </a>
+            </div>
+            <div class="ml-1/24 small text-primary">
+              <a href="{{ site.link }}/privacyverklaring">
+                Privacyverklaring
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-16">
+          <div class="col w-22/24 flex justify-between items-end text-white" style="opacity: 0.8">
+            {% include "svg/sdk.twig" %}
+            <div class="p3" style="line-height: 1">
+              <a target="_blank" href="https://sdkvastgoed.nl">sdkvastgoed.nl</a>
+            </div>
+          </div>
+        </div>
       </div>
 
     {% endblock %}

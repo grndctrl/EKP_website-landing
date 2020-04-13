@@ -90,31 +90,43 @@ export default {
 
   .toggle {
     @apply relative;
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     transition: transform 400ms ease;
 
     span {
       @apply block bg-black absolute top-0 left-0;
-      width: 32px;
+      width: 22px;
       height: 1px;
-      transform: translateY(16px);
+      transform: translateY(11px);
       transition: transform 200ms ease-out;
 
       &:first-child {
-        transform: translateY(16px) rotate(90deg) scaleX(1);
+        transform: translateY(11px) rotate(90deg) scaleX(1);
       }
     }
   }
-  
-  /* &.active .toggle span {
-    &:first-child {
-      transform: translateY(16px) rotate(90deg) scaleX(0);
-    }
-  } */
 
   &.active .toggle {
     transform: rotate(135deg);
+  }
+}
+
+@screen md {
+  .accordion-slide {
+    .toggle {
+      width: 32px;
+      height: 32px;
+
+      span {
+        width: 32px;
+        transform: translateY(16px);
+
+        &:first-child {
+          transform: translateY(16px) rotate(90deg) scaleX(1);
+        }
+      }
+    }
   }
 }
 </style>

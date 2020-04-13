@@ -1,18 +1,20 @@
 <div class="row h-full">
   <div class="col h-full w-21/24 flex items-center mx-auto">
-    {% set ratio = 'contain' %}
+    {% set ratio = "contain" %}
     {% if content.fit %}
-      {% set ratio = 'fit' %}
+      {% set ratio = "fit" %}
     {% endif %}
 
-            <div class="absolute inset-0 mb-8">
-    {% include "components/lazy-image.twig" with {
+    <div class="absolute inset-0 mb-8">
+      {% include "components/lazy-image.twig" with {
       image: content.image,
       ratio: ratio,
       size: 'landscape',
       loose: true
     } %}
-        </div>
-
+    </div>
+    <div class="subtext absolute bottom-0">
+      {{ content.subtext }}
+    </div>
   </div>
 </div>

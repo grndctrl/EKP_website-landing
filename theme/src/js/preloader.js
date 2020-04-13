@@ -2,9 +2,6 @@ import { eventBus } from "./event-bus"
 
 window.addEventListener('DOMContentLoaded', () => {
   let preloader = document.querySelector('#preloader')
-  let currOpacity = 1
-  let duration = 0.4
-  let step = 1 / (duration * 60) 
   let isLayoutLoaded = window.isLayoutLoaded || false
   console.log("document.onload -> isLayoutLoaded", isLayoutLoaded)
   let isContentLoaded = window.isContentLoaded || false
@@ -31,18 +28,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function fadeOut() {
-    requestAnimationFrame(animation)
-    
-    function animation() {
-      currOpacity -= step
-      preloader.style.opacity = currOpacity
-      
-      if (currOpacity <= 0) {
+    setTimeout(() => {
+      preloader.style.opacity = 0
+
+      setTimeout(() => {
         preloader.style.display = 'none'
-      } else {
-        requestAnimationFrame(animation)
-      }
-    }
+      }, 400)
+    }, 400)
   }
 
   checkLoadedContent()

@@ -16,7 +16,7 @@
     {{function('wp_head')}}
   </head>
 
-  <body class="bg-secondary text-black">
+  <body class="bg-secondary text-black {{ bodyClass|join(' ') }}">
     <div class="custom-cursor"></div>
     <div id="layout">
 

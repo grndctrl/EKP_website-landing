@@ -26,8 +26,8 @@
         </svg>
       </div>
       <div class="spacer w-14/24"></div>
-      <div class="flickity-slide-pagination w-2/24" v-if="slides.length > 1">
-        <span class="current">{{ currentSlide }}</span> /
+      <div class="flickity-slide-pagination small w-2/24" v-if="slides.length > 1">
+        <span class="current"><span v-if="currentSlide < 10">0</span>{{ currentSlide }}</span> /
         <span class="total">{{ slides.length }}</span>
       </div>
       <div class="spacer w-3/24"></div>
@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import 'flickity-fade/flickity-fade.css'
-import 'flickity/css/flickity.css'
 import Flickity from 'flickity-fade'
 import eventBus from '@src/js/event-bus'
 
@@ -109,7 +107,9 @@ export default {
       })
 
       prevButton.addEventListener('mouseenter', (event) => {
-        this.cursorElement.innerHTML = cursorContent.innerHTML
+        if (cursorContent) {
+          this.cursorElement.innerHTML = cursorContent.innerHTML
+        }
         document.body.classList.add('has-custom-cursor')
       })
 
@@ -132,7 +132,9 @@ export default {
       })
 
       nextButton.addEventListener('mouseenter', (event) => {
-        this.cursorElement.innerHTML = cursorContent.innerHTML
+        if (cursorContent) {
+          this.cursorElement.innerHTML = cursorContent.innerHTML
+        }
         document.body.classList.add('has-custom-cursor')
       })
 

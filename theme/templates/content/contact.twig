@@ -9,17 +9,19 @@
     </div>
 
     <div class="row">
-      <div class="col ml-1/24 w-10/24">
-        {% include "components/lazy-image.twig" %}
+      <div class="col ml-1/24 w-20/24 mb-8 md:w-10/24 md:mb-0">
+        {% include "components/lazy-image.twig" with { 
+          image: content.image
+        } %}
       </div>
-      <div class="col ml-1/24 w-10/24">
+      <div class="col ml-1/24 w-20/24 md:w-10/24">
         <div class="p1 mb-12">
           {{ content.textBig }}
         </div>
-        <div class="p3 mb-12">
+        <div class="p3 mb-10">
           {{ content.textNormal }}
         </div>
-        <a href="#" class="button">enquête</a>
+        <a href="https://account.ekp-denbosch.nl" target="_blank" class="button">enquête</a>
       </div>
     </div>
 </div>

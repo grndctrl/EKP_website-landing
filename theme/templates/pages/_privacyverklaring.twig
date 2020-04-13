@@ -1,0 +1,29 @@
+{# Default page #}
+
+{% extends "layout/base.twig" %}
+
+{% set bodyClass = ['no-page-header'] %}
+{% set mainClass = ['page-' ~ post.slug, 'bg-white'] %}
+
+{% block main %}
+
+    <div class="page-header-offset"></div>
+
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col p3 md:ml-1/24" style="max-width: 1000px">
+            {{ post.content }}
+          </div>
+        </div>
+        <div class="row mt-2/24">
+          <div class="col md:ml-1/24">
+            <a href="#" @click="returnHome" data-home="{{ site.link }}" class="button">terug</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

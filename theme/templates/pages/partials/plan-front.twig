@@ -1,9 +1,17 @@
 <div class="row">
   <div class="col mx-auto md:w-21/24">
-    <h1 class="h0 mb-32 no-breaks">
-      {{ content.columns.leftColumn.header }}
-    </h1>
-    <p class="p1 mb-20">{{ content.columns.leftColumn.text }}</p>
+    <div class="mb-12 md:mb-32 flex items-center justify-between">
+      <h1 class="h0 no-breaks">
+        {{ content.columns.leftColumn.header }}
+      </h1>
+      <a @click="returnHome" data-home="{{ site.link }}" class="">
+        <div class="pointer-events-none">
+          {% include "svg/close.twig" %}
+        </div>
+      </a>
+    </div>
+    <p class="p1 hidden md:block mb-20">{{ content.columns.leftColumn.text }}</p>
+    <p class="p0 block md:hidden mb-16">{{ content.columns.leftColumn.text }}</p>
   </div>
 </div>
 

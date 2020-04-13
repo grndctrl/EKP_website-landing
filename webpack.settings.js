@@ -3,11 +3,12 @@ const theme = require(path.resolve(__dirname, 'config/theme.json'))
 
 module.exports = {
   theme: theme,
-  publicPath: process.env.PUBLIC_PATH || '/wp-content/themes/' + theme.slug + '/',
+  // publicPath: process.env.PUBLIC_PATH || '/wp-content/themes/' + theme.slug + '/',
+  publicPath: 'https://ekp.grndctrl.io/public/wp-content/themes/' + theme.slug + '/',
   buildPath: process.env.PUBLIC_PATH || 'dist/',
   urls: {
-    live: 'https://example.com/',
-    local: 'http://localhost:8080/',
+    live: 'https://ekp.grndctrl.io/public',
+    local: 'http://localhost:8080',
     critical: 'http://localhost:8080/',
   },
   criticalCssConfig: {

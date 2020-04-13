@@ -2,7 +2,8 @@
   @apply fixed h-0 w-0 top-0 left-0;
 }
 
-body.is-nav-active {
+body.is-nav-active,
+body.is-modal-active {
   @apply overflow-hidden w-screen h-screen fixed;
 }
 
@@ -29,6 +30,12 @@ body.is-nav-active {
         @apply my-4 text-4xl uppercase font-bold;
       }
     }
+  }
+}
+
+@screen md {
+  body.is-modal-active {
+    @apply overflow-auto w-auto h-auto relative;
   }
 }
 
